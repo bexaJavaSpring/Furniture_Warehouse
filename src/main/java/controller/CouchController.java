@@ -35,21 +35,12 @@ public class CouchController implements BaseController {
 
 
     @Override
-    public void findByPrice() {
-        BaseUtils.print("Enter price: ");
-        ResponseEntity<DataDTO<List<Couch>>> responseEntity = couchService.findByPrice(BaseUtils.readDouble());
+    public void findByCost() {
+        BaseUtils.print("Enter cost: ");
+        ResponseEntity<DataDTO<List<Couch>>> responseEntity = couchService.findByCost(BaseUtils.readDouble());
         BaseUtils.print(BaseUtils.gson.toJson(responseEntity));
     }
 
-    @Override
-    public void filterByPrice() {
-        BaseUtils.print("Enter min: ");
-        Double min = BaseUtils.readDouble();
-        BaseUtils.print("Enter max: ");
-        Double max = BaseUtils.readDouble();
-        ResponseEntity<DataDTO<List<Couch>>> responseEntity = couchService.filterByPrice(min, max);
-        BaseUtils.print(BaseUtils.gson.toJson(responseEntity));
-    }
 
     @Override
     public void findByCreationDate() {

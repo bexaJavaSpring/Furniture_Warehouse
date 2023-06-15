@@ -25,7 +25,7 @@ public class WardrobeService implements BaseService<Wardrobe> {
             }
             switch (sort) {
                 case "1" -> wardrobe.sort(Comparator.comparing(Wardrobe::getId));
-                case "2" -> wardrobe.sort(Comparator.comparing(Wardrobe::getPrice));
+                case "2" -> wardrobe.sort(Comparator.comparing(Wardrobe::getBranchName));
             }
             return new ResponseEntity<>(new DataDTO<>(wardrobe));
         } catch (Exception e) {
@@ -51,27 +51,12 @@ public class WardrobeService implements BaseService<Wardrobe> {
                     .build()), 400);
         }    }
 
-    @Override
-    public ResponseEntity<DataDTO<List<Wardrobe>>> filterByPrice(Double min, Double max) {
-        try {
-            List<Wardrobe> wardrobes = dao.findAll().stream().filter(wardrobe ->
-                    wardrobe.getPrice() >= min && wardrobe.getPrice() <= max).toList();
-            if (wardrobes.isEmpty()) {
-                throw new GenericNotFoundException("Wardrobes not found!");
-            }
-            return new ResponseEntity<>(new DataDTO<>(wardrobes), 200);
-        } catch (Exception e) {
-            return new ResponseEntity<>(new DataDTO<>(AppErrorDTO.builder()
-                    .friendlyMessage(e.getMessage())
-                    .developerMessage(e.getMessage())
-                    .build()), 400);
-        }    }
 
     @Override
-    public ResponseEntity<DataDTO<List<Wardrobe>>> findByPrice(Double price) {
+    public ResponseEntity<DataDTO<List<Wardrobe>>> findByCost(Double cost) {
         try {
             List<Wardrobe> wardrobes = dao.findAll().stream().filter(wardrobe ->
-                    wardrobe.getPrice().equals(price)).toList();
+                    wardrobe.getCost().equals(cost)).toList();
             if (wardrobes.isEmpty()) {
                 throw new GenericNotFoundException("Wardrobes not found!");
             }

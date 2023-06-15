@@ -13,8 +13,8 @@ public class Couch extends BaseDomain{
     private String style;
 
     @Builder(builderMethodName = "childBuilder")
-    public Couch(Long id, String branchName, String material, Double price, Timestamp creationDate, Boolean isBackrest, String style) {
-        super(id, branchName, material, price, creationDate);
+    public Couch(Long id, String branchName, String material, Double cost, Timestamp creationDate, Boolean isBackrest, String style) {
+        super(id, branchName, material, cost, creationDate);
         this.isBackrest = isBackrest;
         this.style = style;
     }

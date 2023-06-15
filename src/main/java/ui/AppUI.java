@@ -13,12 +13,12 @@ public class AppUI {
     private final DoorController doorController=new DoorController();
 
     public void run() {
-        BaseUtils.println("\n\n1 -> Chair");
-        BaseUtils.println("2 -> Couch");
-        BaseUtils.println("3 -> Wardrobe");
-        BaseUtils.println("4 -> Table");
-        BaseUtils.println("5 -> Door");
-        BaseUtils.println("q -> Quit");
+        BaseUtils.println("\n\n1: Chair");
+        BaseUtils.println("2: Couch");
+        BaseUtils.println("3: Wardrobe");
+        BaseUtils.println("4: Table");
+        BaseUtils.println("5: Door");
+        BaseUtils.println("q: Quit");
 
         BaseUtils.print("-- Select operation: ");
         switch (BaseUtils.readText()) {
@@ -34,59 +34,51 @@ public class AppUI {
     }
 
     public String baseUI() {
-        BaseUtils.println("1 -> Show all");
-        BaseUtils.println("2 -> Find by id");
-        BaseUtils.println("3 -> Find by price");
-        BaseUtils.println("4 -> Filter by price");
-        BaseUtils.println("5 -> Find by BranchName");
-        BaseUtils.println("6 -> Find by creationDate");
-        BaseUtils.println("0 -> Back");
+        BaseUtils.println("1 -> Read All  2 -> Search by id  3 -> Search by cost");
+        BaseUtils.println("4 -> Search by BranchName  5 -> Search by CreationDate  0 -> Back");
 
         BaseUtils.print("Select operation: ");
         return BaseUtils.readText();
     }
 
     private void couchUI() {
-        BaseUtils.println("\n\n7 -> Find By Style");
+        BaseUtils.println("\n\n6 -> Search By Style");
 
         switch (baseUI()) {
             case "1" -> showAllCouch();
             case "2" -> couchController.findById();
-            case "3" -> couchController.findByPrice();
-            case "4" -> couchController.filterByPrice();
-            case "5" -> couchController.findByBranchName();
-            case "6" -> couchController.findByCreationDate();
-            case "7" -> couchController.findByStyle();
+            case "3" -> couchController.findByCost();
+            case "4" -> couchController.findByBranchName();
+            case "5" -> couchController.findByCreationDate();
+            case "6" -> couchController.findByStyle();
             case "0" -> run();
             default -> BaseUtils.println("Wrong choice!");
         }
         couchUI();
     }
     private void doorUI() {
-        BaseUtils.println("\n\n7 -> Find By WidthAndHeight");
+        BaseUtils.println("\n\n6 -> Search By WidthAndHeight");
         switch (baseUI()) {
             case "1" -> showAllDoor();
             case "2" -> doorController.findById();
-            case "3" -> doorController.findByPrice();
-            case "4" -> doorController.filterByPrice();
-            case "5" -> doorController.findByBranchName();
-            case "6" -> doorController.findByCreationDate();
-            case "7" -> doorController.findByWidthAndHeight();
+            case "3" -> doorController.findByCost();
+            case "4" -> doorController.findByBranchName();
+            case "5" -> doorController.findByCreationDate();
+            case "6" -> doorController.findByWidthAndHeight();
             case "0" -> run();
             default -> BaseUtils.println("Wrong choice!");
         }
         doorUI();
     }
     private void tableUI() {
-        BaseUtils.println("\n\n7 -> Find By isHome");
+        BaseUtils.println("\n\n6 -> Search By isHome");
         switch (baseUI()) {
             case "1" -> showAllTable();
             case "2" -> tableController.findById();
-            case "3" -> tableController.findByPrice();
-            case "4" -> tableController.filterByPrice();
-            case "5" -> tableController.findByBranchName();
-            case "6" -> tableController.findByCreationDate();
-            case "7" -> tableController.findByisHome();
+            case "3" -> tableController.findByCost();
+            case "4" -> tableController.findByBranchName();
+            case "5" -> tableController.findByCreationDate();
+            case "6" -> tableController.findByisHome();
             case "0" -> run();
             default -> BaseUtils.println("Wrong choice!");
         }
@@ -109,9 +101,9 @@ public class AppUI {
         showAllTable();
     }
     private String showUI() {
-        BaseUtils.println("\n\n1 -> Sort by id");
-        BaseUtils.println("2 -> Sort by price");
-        BaseUtils.println("0 -> Back");
+        BaseUtils.println("\n\n1: Sort by id");
+        BaseUtils.println("2: Sort by BranchName");
+        BaseUtils.println("0: Back");
 
         BaseUtils.print("-- Select operation: ");
         return BaseUtils.readText();
@@ -125,14 +117,14 @@ public class AppUI {
         showAllCouch();
     }
     private void chairUI() {
+        BaseUtils.println("\n\n6 -> Search By Material");
         switch (baseUI()) {
             case "1" -> showAllChair();
             case "2" -> chairController.findById();
-            case "3" -> chairController.findByPrice();
-            case "4" -> chairController.filterByPrice();
-            case "5" -> chairController.findByBranchName();
+            case "3" -> chairController.findByCost();
+            case "4" -> chairController.findByBranchName();
+            case "5" -> chairController.findByCreationDate();
             case "6" -> chairController.findByMaterial();
-            case "7" -> chairController.findByCreationDate();
             case "0" -> run();
             default -> BaseUtils.println("Wrong choice!");
         }
@@ -147,15 +139,14 @@ public class AppUI {
         showAllChair();
     }
     private void wardrobeUI() {
-        BaseUtils.println("\n\n8 -> Find by without_mirror");
+        BaseUtils.println("\n\n6 -> Search by Ismirror");
         switch (baseUI()) {
             case "1" -> showAllWardrobe();
             case "2" -> wardrobeController.findById();
-            case "3" -> wardrobeController.findByPrice();
-            case "4" -> wardrobeController.filterByPrice();
-            case "5" -> wardrobeController.findByBranchName();
-            case "7" -> wardrobeController.findByCreationDate();
-            case "8" -> wardrobeController.findByIsMirror();
+            case "3" -> wardrobeController.findByCost();
+            case "4" -> wardrobeController.findByBranchName();
+            case "5" -> wardrobeController.findByCreationDate();
+            case "6" -> wardrobeController.findByIsMirror();
             case "0" -> run();
             default -> BaseUtils.println("Wrong choice!");
         }

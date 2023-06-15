@@ -12,8 +12,8 @@ public class Table extends BaseDomain{
     private Boolean isHome;
 
     @Builder(builderMethodName = "childBuilder")
-    public Table(Long id, String branchName, String material, Double price, Timestamp creationDate, Boolean isHome) {
-        super(id, branchName, material, price, creationDate);
+    public Table(Long id, String branchName, String material, Double cost, Timestamp creationDate, Boolean isHome) {
+        super(id, branchName, material, cost, creationDate);
         this.isHome = isHome;
     }
 }

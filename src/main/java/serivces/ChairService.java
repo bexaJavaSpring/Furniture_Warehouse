@@ -25,7 +25,7 @@ public class ChairService implements BaseService<Chair> {
             }
             switch (sort) {
                 case "1" -> chair.sort(Comparator.comparing(Chair::getId));
-                case "2" -> chair.sort(Comparator.comparing(Chair::getPrice));
+                case "2" -> chair.sort(Comparator.comparing(Chair::getBranchName));
             }
             return new ResponseEntity<>(new DataDTO<>(chair));
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class ChairService implements BaseService<Chair> {
             Chair chair = dao.findAll().stream().filter(chair1 ->
                     chair1.getId().equals(id)).findFirst().orElse(null);
             if (chair == null) {
-                throw new GenericNotFoundException("Chairs not found!");
+                throw new GenericNotFoundException("Chair not found!");
             }
             return new ResponseEntity<>(new DataDTO<>(chair), 200);
         } catch (Exception e) {
@@ -52,26 +52,10 @@ public class ChairService implements BaseService<Chair> {
         }    }
 
     @Override
-    public ResponseEntity<DataDTO<List<Chair>>> filterByPrice(Double min, Double max) {
+    public ResponseEntity<DataDTO<List<Chair>>> findByCost(Double cost) {
         try {
             List<Chair> chairs = dao.findAll().stream().filter(chair ->
-                    chair.getPrice() >= min && chair.getPrice() <= max).toList();
-            if (chairs.isEmpty()) {
-                throw new GenericNotFoundException("Chairs not found!");
-            }
-            return new ResponseEntity<>(new DataDTO<>(chairs), 200);
-        } catch (Exception e) {
-            return new ResponseEntity<>(new DataDTO<>(AppErrorDTO.builder()
-                    .friendlyMessage(e.getMessage())
-                    .developerMessage(e.getMessage())
-                    .build()), 400);
-        }    }
-
-    @Override
-    public ResponseEntity<DataDTO<List<Chair>>> findByPrice(Double price) {
-        try {
-            List<Chair> chairs = dao.findAll().stream().filter(chair ->
-                    chair.getPrice().equals(price)).toList();
+                    chair.getCost().equals(cost)).toList();
             if (chairs.isEmpty()) {
                 throw new GenericNotFoundException("Chairs not found!");
             }

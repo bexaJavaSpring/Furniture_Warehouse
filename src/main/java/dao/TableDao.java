@@ -31,7 +31,7 @@ public class TableDao implements BaseDao<Table> {
                 .id(Long.valueOf(strings[0]))
                 .branchName(strings[1])
                 .material(String.valueOf(strings[2]))
-                .price(Double.valueOf(strings[3]))
+                .cost(Double.valueOf(strings[3]))
                 .creationDate(Timestamp.valueOf(strings[4]))
                 .isHome(Boolean.valueOf(strings[5]))
                 .build();

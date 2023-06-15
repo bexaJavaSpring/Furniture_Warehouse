@@ -32,7 +32,7 @@ public class ChairDao implements BaseDao<Chair> {
                 .id(Long.valueOf(strings[0]))
                 .branchName(strings[1])
                 .material(String.valueOf(strings[2]))
-                .price(Double.valueOf(strings[3]))
+                .cost(Double.valueOf(strings[3]))
                 .creationDate(Timestamp.valueOf(strings[4]))
                 .type(String.valueOf(strings[5]))
                 .build();

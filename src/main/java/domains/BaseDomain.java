@@ -15,6 +15,6 @@ public abstract class BaseDomain {
     protected Long id;
     protected String branchName;
     protected String material;
-    protected Double price;
+    protected Double cost;
     protected Timestamp creationDate;
 }

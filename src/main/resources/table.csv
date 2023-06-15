@@ -1,3 +1,3 @@
-id,branchName,material,price,creationDate,isHome
+id,branchName,material,cost,creationDate,isHome
 1,Artel,wood,40000,2004-05-02 07:14:45,true
 2,Rasulov G,wood,30000,2021-05-02 07:14:45,true

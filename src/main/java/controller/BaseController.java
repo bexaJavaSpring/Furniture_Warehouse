@@ -8,9 +8,7 @@ public interface BaseController {
 
     void findByBranchName();
 
-    void findByPrice();
-
-    void filterByPrice();
+    void findByCost();
 
     void findByCreationDate();
 

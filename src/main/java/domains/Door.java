@@ -12,8 +12,8 @@ public class Door extends BaseDomain{
     private Double height;
 
     @Builder(builderMethodName = "childBuilder")
-    public Door(Long id, String branchName, String material, Double price, Timestamp creationDate, Double width, Double height) {
-        super(id, branchName, material, price, creationDate);
+    public Door(Long id, String branchName, String material, Double cost, Timestamp creationDate, Double width, Double height) {
+        super(id, branchName, material, cost, creationDate);
         this.width = width;
         this.height = height;
     }

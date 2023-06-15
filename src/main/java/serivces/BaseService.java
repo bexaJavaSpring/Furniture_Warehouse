@@ -11,9 +11,7 @@ public interface BaseService<T>{
 
     ResponseEntity<DataDTO<T>> findById(Long id);
 
-    ResponseEntity<DataDTO<List<T>>> filterByPrice(Double min, Double max);
-
-    ResponseEntity<DataDTO<List<T>>> findByPrice(Double price);
+    ResponseEntity<DataDTO<List<T>>> findByCost(Double cost);
 
     ResponseEntity<DataDTO<List<T>>> findByBranchName(String branchName);
 

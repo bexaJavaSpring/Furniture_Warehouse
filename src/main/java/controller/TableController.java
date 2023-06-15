@@ -34,19 +34,9 @@ public class TableController implements BaseController{
 
 
     @Override
-    public void findByPrice() {
-        BaseUtils.print("Enter price: ");
-        ResponseEntity<DataDTO<List<Table>>> responseEntity = tableService.findByPrice(BaseUtils.readDouble());
-        BaseUtils.print(BaseUtils.gson.toJson(responseEntity));
-    }
-
-    @Override
-    public void filterByPrice() {
-        BaseUtils.print("Enter min: ");
-        Double min = BaseUtils.readDouble();
-        BaseUtils.print("Enter max: ");
-        Double max = BaseUtils.readDouble();
-        ResponseEntity<DataDTO<List<Table>>> responseEntity = tableService.filterByPrice(min, max);
+    public void findByCost() {
+        BaseUtils.print("Enter cost: ");
+        ResponseEntity<DataDTO<List<Table>>> responseEntity = tableService.findByCost(BaseUtils.readDouble());
         BaseUtils.print(BaseUtils.gson.toJson(responseEntity));
     }
 

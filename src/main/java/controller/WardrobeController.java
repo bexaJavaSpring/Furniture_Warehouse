@@ -34,19 +34,9 @@ public class WardrobeController implements BaseController{
 
 
     @Override
-    public void findByPrice() {
-        BaseUtils.print("Enter price: ");
-        ResponseEntity<DataDTO<List<Wardrobe>>> responseEntity = wardrobeService.findByPrice(BaseUtils.readDouble());
-        BaseUtils.print(BaseUtils.gson.toJson(responseEntity));
-    }
-
-    @Override
-    public void filterByPrice() {
-        BaseUtils.print("Enter min: ");
-        Double min = BaseUtils.readDouble();
-        BaseUtils.print("Enter max: ");
-        Double max = BaseUtils.readDouble();
-        ResponseEntity<DataDTO<List<Wardrobe>>> responseEntity = wardrobeService.filterByPrice(min, max);
+    public void findByCost() {
+        BaseUtils.print("Enter cost: ");
+        ResponseEntity<DataDTO<List<Wardrobe>>> responseEntity = wardrobeService.findByCost(BaseUtils.readDouble());
         BaseUtils.print(BaseUtils.gson.toJson(responseEntity));
     }
 

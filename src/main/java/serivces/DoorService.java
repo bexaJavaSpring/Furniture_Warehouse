@@ -25,7 +25,7 @@ public class DoorService implements BaseService<Door> {
             }
             switch (sort) {
                 case "1" -> door.sort(Comparator.comparing(Door::getId));
-                case "2" -> door.sort(Comparator.comparing(Door::getPrice));
+                case "2" -> door.sort(Comparator.comparing(Door::getBranchName));
             }
             return new ResponseEntity<>(new DataDTO<>(door));
         } catch (Exception e) {
@@ -54,27 +54,10 @@ public class DoorService implements BaseService<Door> {
     }
 
     @Override
-    public ResponseEntity<DataDTO<List<Door>>> filterByPrice(Double min, Double max) {
+    public ResponseEntity<DataDTO<List<Door>>> findByCost(Double cost) {
         try {
             List<Door> doors = dao.findAll().stream().filter(door ->
-                    door.getPrice() >= min && door.getPrice() <= max).toList();
-            if (doors.isEmpty()) {
-                throw new GenericNotFoundException("Doors not found!");
-            }
-            return new ResponseEntity<>(new DataDTO<>(doors), 200);
-        } catch (Exception e) {
-            return new ResponseEntity<>(new DataDTO<>(AppErrorDTO.builder()
-                    .friendlyMessage(e.getMessage())
-                    .developerMessage(e.getMessage())
-                    .build()), 400);
-        }
-    }
-
-    @Override
-    public ResponseEntity<DataDTO<List<Door>>> findByPrice(Double price) {
-        try {
-            List<Door> doors = dao.findAll().stream().filter(door ->
-                    door.getPrice().equals(price)).toList();
+                    door.getCost().equals(cost)).toList();
             if (doors.isEmpty()) {
                 throw new GenericNotFoundException("Doors not found!");
             }

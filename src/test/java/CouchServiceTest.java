@@ -37,14 +37,6 @@ public class CouchServiceTest {
     }
 
     @Test
-    public void filterByPriceTest() {
-        Double max = 50D;
-        Double min = 40D;
-        ResponseEntity<DataDTO<List<Couch>>> all = service.filterByPrice(min, max);
-        Assertions.assertTrue(all.getData().isSuccess(), "Filter by price method is not passed!!");
-    }
-
-    @Test
     public void filterByCreation_DateTest() {
         String str="2018-09-01 09:01:15";
         ResponseEntity<DataDTO<List<Couch>>> all = service.findByCreation_Date(Timestamp.valueOf(str));

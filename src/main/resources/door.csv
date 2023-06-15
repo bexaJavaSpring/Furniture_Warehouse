@@ -1,2 +1,2 @@
-id,branchName,material,price,creationDate,width,height
+id,branchName,material,cost,creationDate,width,height
 1,Artel,wood,34000,2009-04-05 09:04:23,23,45

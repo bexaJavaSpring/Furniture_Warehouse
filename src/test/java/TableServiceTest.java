@@ -35,13 +35,6 @@ public class TableServiceTest {
         Assertions.assertEquals(responseEntity.getStatus(), 200, "Find by color method is not passed!");
     }
 
-    @Test
-    public void filterByPriceTest() {
-        Double max = 50D;
-        Double min = 40D;
-        ResponseEntity<DataDTO<List<Table>>> all = service.filterByPrice(min, max);
-        Assertions.assertTrue(all.getData().isSuccess(), "Filter by price method is not passed!!");
-    }
 
     @Test
     public void filterByCreation_DateTest() {

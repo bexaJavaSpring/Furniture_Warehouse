@@ -25,7 +25,7 @@ public class TableService implements BaseService<Table>{
             }
             switch (sort) {
                 case "1" -> table.sort(Comparator.comparing(Table::getId));
-                case "2" -> table.sort(Comparator.comparing(Table::getPrice));
+                case "2" -> table.sort(Comparator.comparing(Table::getBranchName));
             }
             return new ResponseEntity<>(new DataDTO<>(table));
         } catch (Exception e) {
@@ -53,28 +53,12 @@ public class TableService implements BaseService<Table>{
         }
     }
 
-    @Override
-    public ResponseEntity<DataDTO<List<Table>>> filterByPrice(Double min, Double max) {
-        try {
-            List<Table> tables = dao.findAll().stream().filter(table ->
-                    table.getPrice() >= min && table.getPrice() <= max).toList();
-            if (tables.isEmpty()) {
-                throw new GenericNotFoundException("Tables not found!");
-            }
-            return new ResponseEntity<>(new DataDTO<>(tables), 200);
-        } catch (Exception e) {
-            return new ResponseEntity<>(new DataDTO<>(AppErrorDTO.builder()
-                    .friendlyMessage(e.getMessage())
-                    .developerMessage(e.getMessage())
-                    .build()), 400);
-        }
-    }
 
     @Override
-    public ResponseEntity<DataDTO<List<Table>>> findByPrice(Double price) {
+    public ResponseEntity<DataDTO<List<Table>>> findByCost(Double cost) {
         try {
             List<Table> tables = dao.findAll().stream().filter(table ->
-                    table.getPrice().equals(price)).toList();
+                    table.getCost().equals(cost)).toList();
             if (tables.isEmpty()) {
                 throw new GenericNotFoundException("Tables not found!");
             }
